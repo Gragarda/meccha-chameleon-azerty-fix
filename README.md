@@ -42,7 +42,7 @@ Delete the three `AzertyFix_P.*` files from `Chameleon/Content/Paks/`. Nothing e
 
 ## Known issues
 
-- **Free camera (free view) still moves with WASD.** The free-look/spectate camera uses its own movement input that isn't remapped yet. Identified; planned for a future update.
+- **Free camera (free view) moves with WASD, not ZQSD.** This is an Unreal Engine limitation, not an oversight: the free/spectate camera is the built-in `SpectatorPawn`, whose movement keys are hardcoded in the engine's C++ (`AddEngineDefinedAxisMapping`, `DefaultPawn_MoveForward` → W/A/S/D) and compiled into the game executable. They are not input assets (so the override pak can't reach them) and not config `AxisMappings` (the game blanks any `Input.ini` override on launch). Remapping them would require patching the executable, which is out of scope for a content mod.
 
 ## How it works
 
