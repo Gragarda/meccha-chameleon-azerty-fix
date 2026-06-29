@@ -1,6 +1,8 @@
-# MECCHA CHAMELEON — AZERTY Movement Fix
+# MECCHA CHAMELEON — AZERTY Keyboard Fix
 
 MECCHA CHAMELEON hardcodes WASD for movement and has no key rebinding option anywhere in the settings menu. On an AZERTY keyboard, the physical keys at the WASD position produce different characters, so the default controls are effectively unusable without a workaround. This mod patches the game's Enhanced Input mapping assets directly so movement and UI navigation use ZQSD, matching the physical key layout AZERTY users expect.
+
+It also fixes the Provocation (whistle) key: the game binds it to `1`, which on AZERTY requires holding Shift — but Shift is the Run key, so you couldn't whistle without running. The patch rebinds it to the `&` key (the same physical key, but its unshifted character), so it works on its own.
 
 ## Controls after installing
 
@@ -10,6 +12,7 @@ MECCHA CHAMELEON hardcodes WASD for movement and has no key rebinding option any
 | Q   | Move left |
 | S   | Move back |
 | D   | Move right |
+| &   | Provocation / whistle (was `1`) |
 
 All other bindings (mouse, Shift, Ctrl, E, F, R, etc.) are untouched.
 
@@ -29,7 +32,7 @@ Delete the three `AzertyFix_P.*` files from `Chameleon/Content/Paks/`. Nothing e
 
 ## How it works
 
-The game ships its input bindings baked into Unreal Engine 5 IoStore assets (`.utoc`/`.ucas`/`.pak`), not as an editable `.ini`. This mod is a small override pak (`AzertyFix_P.pak/.ucas/.utoc`) containing patched copies of the affected `Input Mapping Context` assets (`IMC_Default_FirstPerson`, `IC_UINav_Custom`, `IC_UINav`), with the single-letter key names swapped at the binary level (`W`→`Z`, `A`→`Q`, `Q`→`A`). Unreal Engine loads override paks automatically from `Content/Paks/`, so no installer or code injection is needed.
+The game ships its input bindings baked into Unreal Engine 5 IoStore assets (`.utoc`/`.ucas`/`.pak`), not as an editable `.ini`. This mod is a small override pak (`AzertyFix_P.pak/.ucas/.utoc`) containing patched copies of the affected `Input Mapping Context` assets (`IMC_Default_FirstPerson`, `IC_UINav_Custom`, `IC_UINav` for movement/UI, and `IMC_cLeonDefault` for the whistle key). The key names are changed at the asset level (`W`→`Z`, `A`→`Q`, `Q`→`A`, and `One`→`Ampersand`); for the longer whistle name the package offsets are recalculated automatically when the asset is re-serialized. Unreal Engine loads override paks automatically from `Content/Paks/`, so no installer or code injection is needed.
 
 ## Requirements
 
