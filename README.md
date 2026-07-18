@@ -15,7 +15,7 @@ MECCHA CHAMELEON hardcodes WASD for movement and has no key rebinding option any
 | - | Emote / action 6 |
 | A | Clone / copy (was `Q`, now used for strafing) |
 
-UI navigation is remapped to ZQSD as well. Everything else (mouse, Shift, Ctrl, E, F, R…) is untouched.
+UI navigation and **paint-mode camera** movement are remapped to ZQSD as well. Everything else (mouse, Shift, Ctrl, E, F, R…) is untouched.
 
 ## Installation
 
@@ -37,7 +37,7 @@ This patch overrides cooked game assets (including character/controller blueprin
 
 ## How it works
 
-The game ships its input bindings baked into Unreal Engine 5 IoStore assets (`.utoc`/`.ucas`/`.pak`), not as an editable `.ini`. This mod is a single override pak that ships patched copies of the affected `InputMappingContext` assets (movement/UI/whistle/clone) plus the cLeon character/controller/spectate blueprints (keys 2–6). Key names are swapped at the asset level (`W`→`Z`, `A`→`Q`, `Q`→`A`, `One`→`Ampersand`, `Two`→`E_AccentAigu`, `Three`→`Quote`, `Four`→`Apostrophe`, `Five`→`LeftParantheses`, `Six`→`Hyphen`); package offsets are recalculated automatically on re-serialization.
+The game ships its input bindings baked into Unreal Engine 5 IoStore assets (`.utoc`/`.ucas`/`.pak`), not as an editable `.ini`. This mod is a single override pak that ships patched copies of the affected `InputMappingContext` assets (movement/UI/whistle/clone/paint-mode) plus the cLeon character/controller/spectate blueprints (keys 2–6). Key names are swapped at the asset level (`W`→`Z`, `A`→`Q`, `Q`→`A`, `One`→`Ampersand`, `Two`→`E_AccentAigu`, `Three`→`Quote`, `Four`→`Apostrophe`, `Five`→`LeftParantheses`, `Six`→`Hyphen`); package offsets are recalculated automatically on re-serialization.
 
 ## Credits
 
